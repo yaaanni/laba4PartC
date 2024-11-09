@@ -1,0 +1,4 @@
+/home/user/LabWork4_PartC/Task4/build/CMakeFiles/MyTest.dir
+/home/user/LabWork4_PartC/Task4/build/CMakeFiles/test.dir
+/home/user/LabWork4_PartC/Task4/build/CMakeFiles/edit_cache.dir
+/home/user/LabWork4_PartC/Task4/build/CMakeFiles/rebuild_cache.dir
