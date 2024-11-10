@@ -1,6 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+int proverka() {
+    int n;
+    int valid;
+    char c;
+    do {
+        printf("Введите значение: ");
+        
+        valid = scanf("%d", &n);
+        
+        if (valid != 1) {
+            // Если значение не является целым числом, очищаем поток ввода
+            while ((c = getchar()) != '\n' && c != EOF) { }
+            printf("Введите значение повторно\n");
+            // Очистка флага ошибки
+            clearerr(stdin);
+            continue;
+        }
+        
+        // Проверяем, что после числа нет других символов, кроме новой строки
+        c = getchar();
+        if (c != '\n') {
+            valid = 0;
+            while ((c = getchar()) != '\n' && c != EOF) { }
+            printf("Введите значение повторно\n");
+            // Очистка флага ошибки
+            clearerr(stdin);
+        }
+
+    } while (!valid);
+    return n;
+}
+
+int menu() {
+    printf("Выберите интересующий пункт меню: \n");
+    printf("1. Кто выполнил задание\n");
+    printf("2. Результат программы\n");
+    printf("3. Суть программы\n");
+    printf("4. Выход из программы\n");
+    printf(">>>\n");
+    int n;
+    n = proverka();
+    return n;
+}
+
+
 void generateOddMagicSquare(int n);
 void generateDoublyEvenMagicSquare(int n);
 void generateSinglyEvenMagicSquare(int n);
@@ -139,7 +185,7 @@ void generateSinglyEvenMagicSquare(int n) {
     free(subGrid);
 }
 
-int main() {
+void program() {
     int n;
     scanf("%d", &n);
 
@@ -152,6 +198,26 @@ int main() {
     } else {
         generateSinglyEvenMagicSquare(n);
     }
-
-    return 0;
 }
+
+
+int main() {
+    while (1) {
+        int number = menu();
+        if (number == 1) {
+            printf("Попова Яна\n");
+        } else if (number == 2) {
+            program();
+        } else if (number == 3) {
+            printf("Магический квадрат\n");
+        } else if (number == 4) {
+            printf("Выход выполнен успешно!\n");
+            return 0;
+        } else {
+            printf("Неверно ввели значение, попробуйте еще раз: \n");
+            continue;
+        }
+        printf(">>>\n");
+    }
+}
+
